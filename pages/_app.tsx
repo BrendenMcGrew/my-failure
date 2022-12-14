@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import type {AppProps} from 'next/app'
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import {cyan} from "@mui/material/colors";
+import {cyan, grey} from "@mui/material/colors";
 
 const darkTheme = createTheme({
     palette: {
@@ -13,6 +13,9 @@ const darkTheme = createTheme({
         },
         secondary: {
             main: cyan[500]
+        },
+        text: {
+            primary: grey[400]
         }
     },
 });

@@ -113,7 +113,7 @@ export default function PrimarySearchAppBar() {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }} className="w-screen">
+        <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
@@ -131,7 +131,7 @@ export default function PrimarySearchAppBar() {
                         component="div"
                         // sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        MYDiRT
+                        myDiRT
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
