@@ -20,8 +20,7 @@ export default function Login() {
                 <Typography
                     variant="h4"
                     component="div"
-                    className="text-center"
-                    // sx={{ display: { xs: 'none', sm: 'block' } }}
+                    className="text-center text-gray-300"
                 >
                     U.S. Air Force Login
                 </Typography>
