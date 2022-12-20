@@ -72,7 +72,7 @@ export default function PersonalFilesTable() {
     return (
         <Paper className="m-3">
             <TableContainer sx={{ maxHeight: 440 }}>
-                <Table stickyHeader aria-label="sticky table">
+                <Table aria-label="sticky table">
                     <TableHead>
                         <TableRow>
                             {columns.map((column) => (
