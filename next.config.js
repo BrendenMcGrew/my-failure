@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone'
+  output: 'standalone',
+  basePath: '/login'
 }
 
 module.exports = nextConfig
