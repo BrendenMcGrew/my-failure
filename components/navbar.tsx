@@ -12,6 +12,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {palette} from "@mui/system";
 
 export default function PrimarySearchAppBar() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -114,7 +115,7 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" className="bg-air-force-blue bg-none">
                 <Toolbar>
                     <IconButton
                         size="large"

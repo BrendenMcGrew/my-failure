@@ -14,9 +14,6 @@ const darkTheme = createTheme({
         secondary: {
             main: cyan[500]
         },
-        text: {
-            primary: grey[400]
-        }
     },
 });
 export default function App({Component, pageProps}: AppProps) {
