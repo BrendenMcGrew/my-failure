@@ -15,6 +15,7 @@ export default function Login() {
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
     const [token, setToken] = useState('')
+    const pass = 'baba booey'
     useEffect(() => {
         fetch( 'http://localhost:6969/api/get_token', {
     	    method: 'POST',
@@ -22,13 +23,17 @@ export default function Login() {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },    
             body: new URLSearchParams({
-	        'pass': 'baba booey'
+	        'pass': pass
 	    })
 	  }).then((res) => res.json())
 	    .then((data) => {
 	        setToken(data.token)
             })
-    }, [])
+    }, [pass]);
+    useEffect(() => {
+        sessionStorage.setItem('token', token);
+    }, [token]);
+    
     return (
         <>
             <div className="w-1/3 space-y-3 flex items-center justify-center m-auto grid pt-10">
