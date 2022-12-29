@@ -44,7 +44,7 @@ export default function Login() {
                     }}
                 />
                 <Link href="/">Forgot Password?</Link>
-                <Button variant="contained">Login</Button>
+                <Button variant="contained" href='/dashboard'>Login</Button>
                 <Link href="/">Need an account? Make one here</Link>
             </div>
         </>
