@@ -6,48 +6,50 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import DownloadIcon from '@mui/icons-material/Download';
 
 function createData(
-    name: string,
-    id: number,
+    id: string,
+    firstName: string,
+    lastName: string,
+    rank: string,
 ) {
-    return { name, id };
+    return {id, firstName, lastName, rank };
 }
 
 const rows = [
-    createData('AETC form 341', 159),
-    createData('LOC', 237),
-    createData('LOA', 262),
-    createData('LOR', 305),
-    createData('Article 15', 356),
+    createData('1','Norman','Snuffy', 'A1C'),
+    createData('2','Chad','Suffy', 'SRA'),
+    createData('3','Norman','Snuffy II', 'A1C'),
+    createData('4','Super','Snuffy', 'SSGT'),
+    createData('5','Virgin','Snuffy', 'AB'),
 ];
 
-export default function DocumentsTable() {
+export default function SubordinatesTable() {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="col-span-2">
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Download&nbsp;</TableCell>
+                        <TableCell>First Name</TableCell>
+                        <TableCell>Last Name&nbsp;</TableCell>
+                        <TableCell align="right">Rank&nbsp;</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             hover
                         >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {row.firstName}
+                            </TableCell>
+                            <TableCell>
+                                {row.lastName}
                             </TableCell>
                             <TableCell align="right">
-                                <IconButton aria-label="download">
-                                    <DownloadIcon />
-                                </IconButton>
+                                {row.rank}
                             </TableCell>
                         </TableRow>
                     ))}
