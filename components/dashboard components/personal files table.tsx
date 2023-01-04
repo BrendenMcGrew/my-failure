@@ -51,16 +51,17 @@ function createData(
     return { Type, Date, Unit, Where };
 }
 
-const rows = [
+const row = [
     createData('India', 'IN', '1324171354', '3287263'),
     createData('Loc', 'Nov 13, 2022', '552 ACNS', 'Tinker AFB'),
 ];
 
-export default function PersonalFilesTable() {
+export default function PersonalFilesTable({data}) {
+    
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    const handleChangePage = (event: unknown, newPage: number) => {
+   const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
     };
 
@@ -68,7 +69,12 @@ export default function PersonalFilesTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-
+    
+    const rows = [];
+    data && data.documents.forEach( doc =>
+	rows.push( createData( doc.Type, doc.Date, doc.Unit, doc.Where ) )
+    )
+    
     return (
         <Paper className="m-3">
             <TableContainer sx={{ maxHeight: 440 }}>
@@ -118,5 +124,6 @@ export default function PersonalFilesTable() {
                 onRowsPerPageChange={handleChangeRowsPerPage}
             />
         </Paper>
+	
     );
 }

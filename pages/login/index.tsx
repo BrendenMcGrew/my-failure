@@ -5,14 +5,35 @@ import Button from "@mui/material/Button";
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import AFlogo from 'public/USAF_logo.png'
 import Image from "next/image";
+
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
+    const [token, setToken] = useState('')
+    useEffect(() => {
+        fetch( 'http://localhost:6969/api/get_token', {
+    	    method: 'POST',
+	    headers:{
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },    
+            body: new URLSearchParams({
+	        'pass': 'baba booey',
+		'user': 'Luffy'
+	    })
+	  }).then((res) => res.json())
+	    .then((data) => {
+	        setToken(data.token)
+            })
+    }, []);
+    useEffect(() => {
+        sessionStorage.setItem('token', token);
+    }, [token]);
+    
     return (
         <>
             <div className="w-1/3 space-y-3 flex items-center justify-center m-auto grid pt-10">
