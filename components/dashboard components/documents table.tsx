@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/Download';
+import { useRouter } from 'next/router'
 
 function createData(
     name: string,
@@ -25,6 +26,7 @@ const rows = [
 ];
 
 export default function DocumentsTable() {
+    const router = useRouter()
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">

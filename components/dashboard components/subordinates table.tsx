@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useRouter} from "next/router";
 
 function createData(
     id: string,
@@ -25,6 +26,7 @@ const rows = [
 ];
 
 export default function SubordinatesTable() {
+    const router = useRouter()
     return (
         <TableContainer component={Paper} className="col-span-2">
             <Table aria-label="simple table">
@@ -41,6 +43,7 @@ export default function SubordinatesTable() {
                             key={row.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             hover
+                            onClick={ () => router.push('/people/' + row.id)}
                         >
                             <TableCell component="th" scope="row">
                                 {row.firstName}
