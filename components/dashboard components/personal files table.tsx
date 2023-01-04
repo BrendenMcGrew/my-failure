@@ -56,6 +56,7 @@ const row = [
     createData('Loc', 'Nov 13, 2022', '552 ACNS', 'Tinker AFB'),
 ];
 
+// @ts-ignore
 export default function PersonalFilesTable({data}) {
     
     const [page, setPage] = React.useState(0);
@@ -70,8 +71,8 @@ export default function PersonalFilesTable({data}) {
         setPage(0);
     };
     
-    const rows = [];
-    data && data.documents.forEach( doc =>
+    const rows: any[] = [];
+    data && data.documents.forEach( (doc: any) =>
 	rows.push( createData( doc.Type, doc.Date, doc.Unit, doc.Where ) )
     )
     

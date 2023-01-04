@@ -16,7 +16,7 @@ export default function Login() {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
     const [token, setToken] = useState('')
     useEffect(() => {
-        fetch( 'http://localhost:6969/api/get_token', {
+        fetch( 'http://mydirt.af.mil:6969/api/get_token', {
     	    method: 'POST',
 	    headers:{
                 'Content-Type': 'application/x-www-form-urlencoded'
