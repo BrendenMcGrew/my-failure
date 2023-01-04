@@ -1,7 +1,7 @@
 import {Card} from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-export default function Banner({data}) {
+export default function Banner({data}: any) {
     return(
         <>
             <Card className="max-w-full m-3 p-3 grid col-auto grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 space-y-3 lg:justify-items-center">

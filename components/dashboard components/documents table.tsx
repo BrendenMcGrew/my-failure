@@ -23,6 +23,7 @@ const rows = [
     createData('LOA', 262),
     createData('LOR', 305),
     createData('Article 15', 356),
+    createData('AETC form 682', 682)
 ];
 
 export default function DocumentsTable() {
