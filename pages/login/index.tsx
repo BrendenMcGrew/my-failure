@@ -64,9 +64,9 @@ export default function Login() {
                         )
                     }}
                 />
-                <Link href="/">{token}</Link>
-                <Button variant="contained">Login</Button>
-                <Link href="/">{token}</Link>
+                <Link href="/">Forgot Password?</Link>
+                <Button variant="contained" href='/dashboard'>Login</Button>
+                <Link href="/">Need an account? Make one here</Link>
             </div>
         </>
     )
