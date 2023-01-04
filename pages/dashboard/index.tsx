@@ -17,8 +17,8 @@ export default function Dashboard() {
     return(
         <>
             <Banner data={data}/>
-            <Table/>
-            <DocumentsTable/>
+            <Table data={data}/>
+            <DocumentsTable data={data}/>
         </>
     )
 }

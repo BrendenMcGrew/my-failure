@@ -22,8 +22,8 @@ export default function Login() {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },    
             body: new URLSearchParams({
-	        'pass': '123456',
-		'user': 'nuffy'
+	        'pass': 'baba booey',
+		'user': 'Luffy'
 	    })
 	  }).then((res) => res.json())
 	    .then((data) => {
