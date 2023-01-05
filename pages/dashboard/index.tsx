@@ -30,7 +30,7 @@ export default function Dashboard() {
             <PersonalFilesTable data={data}/>
             <div className="grid grid-cols-1 sm:grid-cols-3 m-3 flex-auto sm:gap-10 space-y-3 sm:space-y-0">
             <DocumentsTable templates={templates}/>
-                <SubordinatesTable/>
+            <SubordinatesTable subords={data.subordinates}/>
             </div>
         </>
      )

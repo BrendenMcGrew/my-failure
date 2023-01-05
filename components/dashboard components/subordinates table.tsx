@@ -17,7 +17,7 @@ function createData(
     return {id, firstName, lastName, rank };
 }
 
-const rows = [
+const row = [
     createData('1','Norman','Snuffy', 'A1C'),
     createData('2','Chad','Suffy', 'SRA'),
     createData('3','Norman','Snuffy II', 'A1C'),
@@ -25,8 +25,13 @@ const rows = [
     createData('5','Virgin','Snuffy', 'AB'),
 ];
 
-export default function SubordinatesTable() {
-    const router = useRouter()
+export default function SubordinatesTable({subords}: any) {
+
+    const rows: any[] = [];
+    subords && Object.entries(subords).forEach( (amn: any) =>
+	rows.push ( createData( amn[0], amn[1].name[0], amn[1].name[2], amn[1].rank ) )
+    );
+    
     return (
         <TableContainer component={Paper} className="col-span-2">
             <Table aria-label="simple table">
