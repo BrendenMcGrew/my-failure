@@ -27,7 +27,8 @@ const rows = [
 ];
 
 export default function DocumentsTable({templates}: any) {
-
+    const router = useRouter()
+    
     const rows: any[] = [];
     templates.length && templates.forEach( (template: any) =>
 	rows.push( createData( template.docName, template.docID ) )
@@ -54,7 +55,7 @@ export default function DocumentsTable({templates}: any) {
                             </TableCell>
                             <TableCell align="right">
                                 <IconButton aria-label="download">
-                                    <DownloadIcon />
+                                    <DownloadIcon onClick={ () => router.push('/api/download/template/' + row.id)} />
                                 </IconButton>
                             </TableCell>
                         </TableRow>

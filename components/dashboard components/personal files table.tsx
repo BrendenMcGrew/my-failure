@@ -72,7 +72,7 @@ export default function PersonalFilesTable({data}) {
     };
     
     const rows: any[] = [];
-    data && data.documents && data.documents.isArray && data.documents.forEach( (doc: any) =>
+    data && data.documents && data.documents.forEach( (doc: any) =>
 	rows.push( createData( doc.Type, doc.Date, doc.Unit, doc.Where ) )
     )
     
