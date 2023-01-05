@@ -29,7 +29,7 @@ export default function SubordinatesTable({subords}: any) {
     const router = useRouter()
     
     const rows: any[] = [];
-    subords && Object.entries(subords).forEach( (amn: any) =>
+    subords && subords.isObject && Object.entries(subords).forEach( (amn: any) =>
 	rows.push ( createData( amn[0], amn[1].name[0], amn[1].name[2], amn[1].rank ) )
     );
     

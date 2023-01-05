@@ -29,7 +29,7 @@ const rows = [
 export default function DocumentsTable({templates}: any) {
 
     const rows: any[] = [];
-    templates && templates.forEach( (template: any) =>
+    templates.length && templates.forEach( (template: any) =>
 	rows.push( createData( template.docName, template.docID ) )
     )
     

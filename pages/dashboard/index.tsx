@@ -6,8 +6,8 @@ import {useState, useEffect} from "react";
 // @ts-ignore
 import SwaggerClient from 'swagger-client';
 export default function Dashboard() {
-    const [data, setData] = useState(0);
-    const [templates, setTemplates] = useState(0);
+    const [data, setData] = useState( Object );
+    const [templates, setTemplates] = useState( [] );
     useEffect(() => {
         new SwaggerClient({
             url: 'http://mydirt.af.mil:6969/api',
