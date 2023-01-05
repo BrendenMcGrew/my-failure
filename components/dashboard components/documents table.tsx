@@ -26,8 +26,13 @@ const rows = [
     createData('AETC form 682', 682)
 ];
 
-export default function DocumentsTable() {
-    const router = useRouter()
+export default function DocumentsTable({templates}: any) {
+
+    const rows: any[] = [];
+    templates && templates.forEach( (template: any) =>
+	rows.push( createData( template.docName, template.docID ) )
+    )
+    
     return (
         <TableContainer component={Paper}>
             <Table aria-label="simple table">
