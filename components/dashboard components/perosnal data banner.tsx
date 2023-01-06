@@ -26,13 +26,13 @@ export default function Banner({data}: any) {
                 <div>
                     <span>Office Symbol: </span>
                     <Typography>
-                        DOUV
+                        {data.office}
                     </Typography>
                 </div>
                 <div>
                     <span>Duty Phone: </span>
                     <Typography>
-                        888-8888
+                        {data.phone}
                     </Typography>
                 </div>
                 <div>
