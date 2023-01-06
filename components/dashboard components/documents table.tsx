@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/Download';
 import { useRouter } from 'next/router'
+import Typography from "@mui/material/Typography";
 
 function createData(
     name: string,
@@ -54,8 +55,8 @@ export default function DocumentsTable({templates}: any) {
                                 {row.name}
                             </TableCell>
                             <TableCell align="right">
-                                <IconButton aria-label="download">
-                                    <DownloadIcon onClick={ () => router.push('/api/download/template/' + row.id)} />
+                                <IconButton aria-label="download" onClick={ () => router.push('/api/download/template/' + row.id)}>
+                                    <DownloadIcon />
                                 </IconButton>
                             </TableCell>
                         </TableRow>
