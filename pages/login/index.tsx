@@ -9,33 +9,44 @@ import {useState, useEffect} from "react";
 import Typography from "@mui/material/Typography";
 import AFlogo from 'public/USAF_logo.png'
 import Image from "next/image";
+// @ts-ignore
+import SwaggerClient from 'swagger-client';
+import { useRouter } from 'next/router'
 
 export default function Login() {
+    const router = useRouter()
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
-    const [token, setToken] = useState('')
-    useEffect(() => {
-        fetch( 'http://mydirt.af.mil:6969/api/get_token', {
-    	    method: 'POST',
-	    headers:{
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },    
-            body: new URLSearchParams({
-	        'pass': 'baba booey',
-		'user': 'Luffy'
+
+    const [username, setUsername] = useState( '' );
+    const [password, setPassword] = useState( '' );
+    function tryLogin(username: string, password: string){
+	if( username && password ){
+	    new SwaggerClient({
+		url: 'http://mydirt.af.mil:6969/api',
+	    }).then((client: any) => client.execute({
+		operationId: "getToken",
+		// parameters sends as url parameters, but I can't get body to send anything
+		parameters: {
+		    user: username,
+		    pass: password
+		},
+		method: "POST",
+		headers: {
+		    'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		// this sends creds over query params, on a POST request
+		// I can't get it to send anything in request body
+	    })).then((data: any) => {
+		sessionStorage.setItem('token', data.body.token);
+		router.push('/dashboard');
 	    })
-	  }).then((res) => res.json())
-	    .then((data) => {
-	        setToken(data.token)
-            })
-    }, []);
-    useEffect(() => {
-        sessionStorage.setItem('token', token);
-    }, [token]);
-    
+	}
+    }
+
     return (
-        <>
+	<>
             <div className="w-1/3 space-y-3 flex items-center justify-center m-auto grid pt-10">
                 <Image src={AFlogo} alt={'Air Force Logo'} className='max-w-xs h-auto mb-1 m-auto'/>
                 <Typography
@@ -44,9 +55,14 @@ export default function Login() {
                     className="text-center text-gray-300"
                 >
                     U.S. Air Force Login
-                </Typography>
-                <TextField id="outlined-basic" label="Username" variant="outlined"/>
-                <TextField
+        </Typography>
+	    
+            <TextField
+	onChange={(my) => { setUsername(my.target.value); }}
+	        id="outlined-basic" label="Username" variant="outlined"
+	    />
+            <TextField
+	onChange={(my) => { setPassword(my.target.value); }}
                     label="Password"
                     variant="outlined"
                     type={showPassword ? "text" : "password"}
@@ -63,9 +79,9 @@ export default function Login() {
                             </InputAdornment>
                         )
                     }}
-                />
+            />
                 <Link href="/">Forgot Password?</Link>
-                <Button variant="contained" href='/dashboard'>Login</Button>
+	    <Button variant="contained" onClick={() => { tryLogin(username, password)}}>Login</Button>
                 <Link href="/">Need an account? Make one here</Link>
             </div>
         </>
