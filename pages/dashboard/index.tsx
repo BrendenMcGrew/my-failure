@@ -10,13 +10,13 @@ export default function Dashboard() {
     const [templates, setTemplates] = useState( [] );
     useEffect(() => {
         new SwaggerClient({
-            url: 'http://mydirt.af.mil:6969/api',
+            url: 'https://dirt.af.mil/api.json',
             authorizations: { tokenAuthn:
                     window.sessionStorage.getItem('token')
             }}).then((client:any) => client.apis.default.getInfo())
             .then((Response: any) => setData(Response.body))
 	new SwaggerClient({
-            url: 'http://mydirt.af.mil:6969/api',
+            url: 'https://dirt.af.mil/api.json',
             authorizations: { tokenAuthn:
                     window.sessionStorage.getItem('token')
             }}).then((client:any) => client.apis.default.getTemplates())

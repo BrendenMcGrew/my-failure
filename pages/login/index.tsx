@@ -27,7 +27,7 @@ export default function Login() {
         if (username && password) {
 
             new SwaggerClient({
-                url: 'http://mydirt.af.mil:6969/api',
+		url: 'https://dirt.af.mil/api.json',
             }).then((client: any) => client.execute({
                 operationId: "getToken",
                 // parameters sends as url parameters, but I can't get body to send anything
@@ -42,7 +42,6 @@ export default function Login() {
                 // this sends creds over query params, on a POST request
                 // I can't get it to send anything in request body
             })).then((data: any) => {
-                console.log(data.ok);
                     sessionStorage.setItem('token', data.body.token);
                     router.push('/dashboard');
             }).catch((reason: any) => {
@@ -84,12 +83,12 @@ export default function Login() {
                                     onClick={handleClickShowPassword}
                                     onMouseDown={handleMouseDownPassword}
                                 >
-                                    {showPassword ? <Visibility/> : <VisibilityOff/>}
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
                         )
                     }}
-                />
+            />
                 <Link href="/">Forgot Password?</Link>
                 <Button variant="contained" onClick={() => {
                     tryLogin(username, password)
