@@ -9,7 +9,7 @@ export default function Layout({ children }: any) {
     }, []);
     return (
         <>
-            {isLoggedIn && <Navbar/>}
+            {isLoggedIn && (<Navbar/>)}
             <main>{children}</main>
         </>
     )
