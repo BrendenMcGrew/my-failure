@@ -17,15 +17,6 @@ function createData(
     return { name, id };
 }
 
-const rows = [
-    createData('AETC form 341', 159),
-    createData('LOC', 237),
-    createData('LOA', 262),
-    createData('LOR', 305),
-    createData('Article 15', 356),
-    createData('AETC form 682', 682)
-];
-
 export default function DocumentsTable({templates}: any) {
     const router = useRouter()
     
