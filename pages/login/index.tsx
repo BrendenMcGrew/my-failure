@@ -24,7 +24,7 @@ export default function Login() {
     function tryLogin(username: string, password: string){
 	if( username && password ){
 	    new SwaggerClient({
-		url: 'http://mydirt.af.mil:6969/api',
+		url: '/api',
 	    }).then((client: any) => client.execute({
 		operationId: "getToken",
 		// parameters sends as url parameters, but I can't get body to send anything
