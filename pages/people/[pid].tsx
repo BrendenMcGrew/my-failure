@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import PersonalFilesTable from "../../components/dashboard components/personal files table";
 import Banner from "../../components/dashboard components/perosnal data banner";
+// @ts-ignore
+import SwaggerClient from 'swagger-client';
 
 export default function Post () {
     const router = useRouter()
@@ -15,24 +17,13 @@ export default function Post () {
     )
 }
 
-function getPerson(personID:any): personStuff {
-    return {
-        FirstName: 'Steve',
-        MiddleInitial: 'F',
-        LastName: 'Jobs',
-        Organization: '69 CSS',
-        Rank: 'SrA',
-        Office: 'UOD',
-        Supervisor: 'Ligma',
-    }
-}
-
-interface personStuff {
-    FirstName: string,
-    MiddleInitial: string,
-    LastName: string,
-    Organization: string,
-    Rank: string,
-    Office: string,
-    Supervisor: string,
+function getPerson(personID:any): any {
+    new SwaggerClient({
+        url: 'https://dirt.af.mil/api.json',
+        authorizations: { tokenAuthn:
+                window.sessionStorage.getItem('token')
+        }}).then((client:any) => client.apis.default.getSubInfo({personID}))
+        .then((Response: any) => {
+            console.log()
+        })
 }

@@ -1,10 +1,16 @@
 import Navbar from "./navbar";
+import {useEffect} from "react";
 
 export default function Layout({ children }: any) {
+
+    let isLoggedIn;
+    useEffect(() => {
+        isLoggedIn = !!window.sessionStorage.getItem('token')
+    }, []);
     return (
         <>
-            <Navbar></Navbar>
-            <main className="">{children}</main>
+            {isLoggedIn && <Navbar/>}
+            <main>{children}</main>
         </>
     )
 }
