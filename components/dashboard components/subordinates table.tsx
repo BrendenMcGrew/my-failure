@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useRouter} from "next/router";
+import Typography from "@mui/material/Typography";
 
 function createData(
     id: string,
@@ -44,6 +45,7 @@ export default function SubordinatesTable({subords}: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
+                    {rows.length === 0 && ( <TableRow> <TableCell colSpan={3} align={"center"}>no records found</TableCell> </TableRow> )}
                     {rows.map((row) => (
                         <TableRow
                             key={row.id}
